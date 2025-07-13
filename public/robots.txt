@@ -1,0 +1,19 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://snapgrade.com/sitemap.xml
+
+# Disallow admin and private areas
+Disallow: /admin/
+Disallow: /api/
+Disallow: /_next/
+Disallow: /private/
+
+# Allow important pages
+Allow: /auth/
+Allow: /dashboard/
+Allow: /features/
+Allow: /pricing/
+Allow: /contact/
+Allow: /about/
