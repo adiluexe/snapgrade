@@ -18,6 +18,7 @@ import {
   CheckCircle,
   Activity,
   Zap,
+  CircleCheck,
 } from "lucide-react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -163,7 +164,7 @@ export default function TestDetail() {
                 <FileText className="w-6 h-6 text-primary" />
               </div>
               <div>
-                <h1 className="text-3xl font-bold text-text mb-1">
+                <h1 className="text-3xl font-bold text-text mb-1 font-heading font-bold">
                   {test.title}
                 </h1>
                 <div className="flex items-center space-x-4 text-text/70">
@@ -179,8 +180,8 @@ export default function TestDetail() {
                     </span>
                   </div>
                   <span>•</span>
-                  <div className="flex items-center space-x-1">
-                    <CheckCircle
+                  <div className="flex items-center space-x-1 uppercase">
+                    <CircleCheck
                       className={`w-4 h-4 ${
                         test.status === "active"
                           ? "text-green-600"
@@ -212,7 +213,7 @@ export default function TestDetail() {
         {/* Quick Actions */}
         <div ref={actionsRef} className="grid md:grid-cols-3 gap-6 mb-8">
           <Link href={`/tests/${test.id}/scan`}>
-            <div className="action-card bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 cursor-pointer group border hover:border-primary/20">
+            <div className="action-card bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 cursor-pointer group  hover:border-primary/20 flex flex-col h-full min-h-[260px]">
               <div className="flex items-center justify-between mb-4">
                 <div className="w-12 h-12 bg-gradient-to-br from-primary/20 to-primary/10 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                   <Camera className="w-6 h-6 text-primary group-hover:rotate-12 transition-transform duration-300" />
@@ -225,7 +226,7 @@ export default function TestDetail() {
               <h3 className="text-lg font-bold text-text mb-2 group-hover:text-primary transition-colors">
                 Scan Sheets
               </h3>
-              <p className="text-text/70 text-sm leading-relaxed">
+              <p className="text-text/70 text-sm leading-relaxed flex-1">
                 Upload or scan bubble sheets for automatic grading
               </p>
               <div className="mt-4 flex items-center text-primary text-sm font-medium group-hover:translate-x-1 transition-transform duration-300">
@@ -236,7 +237,7 @@ export default function TestDetail() {
           </Link>
 
           <Link href={`/tests/${test.id}/results`}>
-            <div className="action-card bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 cursor-pointer group border hover:border-secondary/20">
+            <div className="action-card bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 cursor-pointer group  hover:border-secondary/20 flex flex-col h-full min-h-[260px]">
               <div className="flex items-center justify-between mb-4">
                 <div className="w-12 h-12 bg-gradient-to-br from-secondary/20 to-secondary/10 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                   <BarChart3 className="w-6 h-6 text-secondary group-hover:rotate-12 transition-transform duration-300" />
@@ -249,7 +250,7 @@ export default function TestDetail() {
               <h3 className="text-lg font-bold text-text mb-2 group-hover:text-secondary transition-colors">
                 View Results
               </h3>
-              <p className="text-text/70 text-sm leading-relaxed">
+              <p className="text-text/70 text-sm leading-relaxed flex-1">
                 See graded results and detailed analytics
               </p>
               <div className="mt-4 flex items-center text-secondary text-sm font-medium group-hover:translate-x-1 transition-transform duration-300">
@@ -260,7 +261,7 @@ export default function TestDetail() {
           </Link>
 
           <div
-            className="action-card bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 cursor-pointer group border hover:border-accent/20"
+            className="action-card bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 cursor-pointer group  hover:border-accent/20 flex flex-col h-full min-h-[260px]"
             onClick={() => downloadBubbleSheetPDF(test.totalQuestions)}
           >
             <div className="flex items-center justify-between mb-4">
@@ -275,7 +276,7 @@ export default function TestDetail() {
             <h3 className="text-lg font-bold text-text mb-2 group-hover:text-accent transition-colors">
               Download Template
             </h3>
-            <p className="text-text/70 text-sm leading-relaxed">
+            <p className="text-text/70 text-sm leading-relaxed flex-1">
               Get the bubble sheet template for printing
             </p>
             <div className="mt-4 flex items-center text-accent text-sm font-medium group-hover:translate-x-1 transition-transform duration-300">

@@ -9,7 +9,7 @@ export default function TestsLayout({
   return (
     <div className="min-h-screen bg-background">
       {/* Navigation */}
-      <nav className="bg-transparent">
+      <nav className="bg-transparent p-4">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16">
             <div className="flex items-center">
@@ -29,7 +29,9 @@ export default function TestsLayout({
                 className="text-text hover:text-primary transition-all duration-300 relative group font-heading flex items-center space-x-2"
               >
                 <ArrowLeft className="w-4 h-4" />
-                <span>Back to Dashboard</span>
+                <span className="font-medium font-heading">
+                  Back to Dashboard
+                </span>
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
               </Link>
             </div>
