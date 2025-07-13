@@ -3,12 +3,13 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { templateConfigs } from '@/lib/bubblesheet';
 
 export default function CreateTest() {
   const [testData, setTestData] = useState({
     title: "",
     description: "",
-    template: "50", // 25, 50, or 100 questions
+    template: "50", // Default to 50 questions
     totalQuestions: 50,
     passingScore: 70,
     subject: "",
@@ -19,26 +20,13 @@ export default function CreateTest() {
   const [error, setError] = useState("");
   const router = useRouter();
 
-  const templates = [
-    {
-      id: "25",
-      name: "25 Questions",
-      questions: 25,
-      description: "Short quiz format",
-    },
-    {
-      id: "50",
-      name: "50 Questions",
-      questions: 50,
-      description: "Standard test format",
-    },
-    {
-      id: "100",
-      name: "100 Questions",
-      questions: 100,
-      description: "Extended test format",
-    },
-  ];
+  // Convert templateConfigs to the format expected by the component
+  const templates = Object.entries(templateConfigs).map(([key, config]) => ({
+    id: key,
+    name: config.name,
+    questions: parseInt(key),
+    description: config.description
+  }));
 
   const answerOptions = ["A", "B", "C", "D", "E"];
 
@@ -270,24 +258,20 @@ export default function CreateTest() {
                 <label className="block text-sm font-medium text-text mb-4">
                   Bubble Sheet Template *
                 </label>
-                <div className="grid md:grid-cols-3 gap-4">
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
                   {templates.map((template) => (
                     <div
                       key={template.id}
-                      className={`border-2 rounded-lg p-4 cursor-pointer transition-all ${
+                      className={`border-2 rounded-lg p-3 cursor-pointer transition-all ${
                         testData.template === template.id
                           ? "border-primary bg-primary/5"
                           : "border-gray-200 hover:border-gray-300"
                       }`}
                       onClick={() => handleTemplateChange(template.id)}
                     >
-                      <h3 className="font-bold text-text">{template.name}</h3>
-                      <p className="text-sm text-text/70 mt-1">
-                        {template.description}
-                      </p>
-                      <p className="text-sm text-primary mt-2">
-                        {template.questions} questions
-                      </p>
+                      <h3 className="font-bold text-text text-sm">{template.name}</h3>
+                      <p className="text-xs text-text/70 mt-1">{template.description}</p>
+                      <p className="text-xs text-primary mt-1">{template.questions} questions</p>
                     </div>
                   ))}
                 </div>

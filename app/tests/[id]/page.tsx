@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
-import { downloadBubbleSheet } from "@/lib/bubblesheet";
+import { downloadBubbleSheetPDF } from "@/lib/bubblesheet";
 
 interface Test {
   id: string;
@@ -122,7 +122,7 @@ export default function TestDetail() {
 
           <div
             className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow cursor-pointer"
-            onClick={() => downloadBubbleSheet(test.totalQuestions)}
+            onClick={() => downloadBubbleSheetPDF(test.totalQuestions)}
           >
             <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center mb-4">
               <div className="w-6 h-6 bg-accent rounded"></div>
