@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
-import Link from 'next/link';
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 interface User {
   id: string;
@@ -12,26 +12,44 @@ interface User {
   school?: string;
 }
 
+interface Test {
+  id: string;
+  title: string;
+  totalQuestions: number;
+  createdAt: string;
+  studentsGraded: number;
+  subject?: string;
+  class?: string;
+}
+
 export default function Dashboard() {
   const [user, setUser] = useState<User | null>(null);
+  const [tests, setTests] = useState<Test[]>([]);
   const [loading, setLoading] = useState(true);
   const router = useRouter();
 
   useEffect(() => {
     // Check if user is logged in
-    const currentUser = localStorage.getItem('snapgrade_current_user');
+    const currentUser = localStorage.getItem("snapgrade_current_user");
     if (!currentUser) {
-      router.push('/auth/signin');
+      router.push("/auth/signin");
       return;
     }
 
     setUser(JSON.parse(currentUser));
+
+    // Load user's tests
+    const existingTests = JSON.parse(
+      localStorage.getItem("snapgrade_tests") || "[]"
+    );
+    setTests(existingTests);
+
     setLoading(false);
   }, [router]);
 
   const handleSignOut = () => {
-    localStorage.removeItem('snapgrade_current_user');
-    router.push('/');
+    localStorage.removeItem("snapgrade_current_user");
+    router.push("/");
   };
 
   if (loading) {
@@ -79,24 +97,29 @@ export default function Dashboard() {
             Welcome back, {user.firstName}!
           </h1>
           <p className="text-text/70">
-            Ready to start grading? Create a new test or manage your existing ones.
+            Ready to start grading? Create a new test or manage your existing
+            ones.
           </p>
         </div>
 
         {/* Quick Actions */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-          <div className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow cursor-pointer">
-            <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-              <div className="w-6 h-6 bg-primary rounded"></div>
+          <Link href="/tests/create">
+            <div className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow cursor-pointer">
+              <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                <div className="w-6 h-6 bg-primary rounded"></div>
+              </div>
+              <h3 className="text-lg font-bold text-text mb-2">
+                Create New Test
+              </h3>
+              <p className="text-text/70 mb-4">
+                Set up a new bubble sheet test with answer keys
+              </p>
+              <button className="text-primary font-medium hover:text-primary/80">
+                Get Started →
+              </button>
             </div>
-            <h3 className="text-lg font-bold text-text mb-2">Create New Test</h3>
-            <p className="text-text/70 mb-4">
-              Set up a new bubble sheet test with answer keys
-            </p>
-            <button className="text-primary font-medium hover:text-primary/80">
-              Get Started →
-            </button>
-          </div>
+          </Link>
 
           <div className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow cursor-pointer">
             <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center mb-4">
@@ -128,16 +151,61 @@ export default function Dashboard() {
         {/* Recent Tests */}
         <div className="bg-white rounded-xl shadow-sm p-6">
           <h2 className="text-xl font-bold text-text mb-4">Recent Tests</h2>
-          <div className="text-center py-12 text-text/70">
-            <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <div className="w-8 h-8 bg-gray-300 rounded"></div>
+          {tests.length === 0 ? (
+            <div className="text-center py-12 text-text/70">
+              <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="w-8 h-8 bg-gray-300 rounded"></div>
+              </div>
+              <p className="text-lg mb-2">No tests yet</p>
+              <p className="text-sm">
+                Create your first test to get started with SnapGrade
+              </p>
+              <Link href="/tests/create">
+                <button className="mt-4 bg-primary text-white px-6 py-2 rounded-lg hover:bg-primary/90 transition-all">
+                  Create New Test
+                </button>
+              </Link>
             </div>
-            <p className="text-lg mb-2">No tests yet</p>
-            <p className="text-sm">Create your first test to get started with SnapGrade</p>
-            <button className="mt-4 bg-primary text-white px-6 py-2 rounded-lg hover:bg-primary/90 transition-all">
-              Create New Test
-            </button>
-          </div>
+          ) : (
+            <div className="space-y-4">
+              {tests
+                .slice(-5)
+                .reverse()
+                .map((test) => (
+                  <Link key={test.id} href={`/tests/${test.id}`}>
+                    <div className="border border-gray-200 rounded-lg p-4 hover:border-primary hover:bg-primary/5 transition-all cursor-pointer">
+                      <div className="flex justify-between items-start">
+                        <div>
+                          <h3 className="font-bold text-text mb-1">
+                            {test.title}
+                          </h3>
+                          <div className="flex items-center space-x-4 text-sm text-text/70">
+                            <span>{test.totalQuestions} questions</span>
+                            {test.subject && <span>• {test.subject}</span>}
+                            {test.class && <span>• {test.class}</span>}
+                          </div>
+                        </div>
+                        <div className="text-right">
+                          <div className="text-sm text-text/70">
+                            {new Date(test.createdAt).toLocaleDateString()}
+                          </div>
+                          <div className="text-sm font-medium text-text">
+                            {test.studentsGraded} students graded
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </Link>
+                ))}
+              {tests.length > 5 && (
+                <div className="text-center pt-4">
+                  <button className="text-primary hover:text-primary/80 transition-colors">
+                    View all tests →
+                  </button>
+                </div>
+              )}
+            </div>
+          )}
         </div>
       </main>
     </div>

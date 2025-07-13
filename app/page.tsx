@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -242,7 +242,9 @@ export default function Home() {
             <div>
               <div className="flex items-center space-x-2 mb-4">
                 <div className="w-8 h-8 bg-primary rounded-lg"></div>
-                <span className="text-xl font-bold text-background">SnapGrade</span>
+                <span className="text-xl font-bold text-background">
+                  SnapGrade
+                </span>
               </div>
               <p className="text-background/80">
                 Making grading efficient and accurate for educators worldwide.
