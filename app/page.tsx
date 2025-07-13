@@ -845,17 +845,31 @@ export default function Home() {
       >
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl lg:text-5xl font-bold text-text mb-6">
-              Loved by
-              <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                {" "}
-                educators{" "}
-              </span>
+            <h2 className="text-4xl lg:text-5xl font-bold text-text mb-6 leading-tight">
+              Loved by{" "}
+              <span className="bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent font-black relative">
+                educators
+                <span className="absolute inset-0 bg-gradient-to-r from-primary/20 via-accent/20 to-secondary/20 blur-lg -z-10"></span>
+              </span>{" "}
               worldwide
             </h2>
-            <p className="text-lg text-text/70 max-w-3xl mx-auto">
+            <p className="text-xl text-text/80 max-w-3xl mx-auto font-medium">
               See what teachers are saying about SnapGrade
             </p>
+            <div className="flex items-center justify-center mt-4 space-x-6">
+              <div className="flex items-center space-x-2 text-primary">
+                <Heart className="w-5 h-5 fill-current" />
+                <span className="font-semibold">10,000+ Happy Teachers</span>
+              </div>
+              <div className="flex items-center space-x-1">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="w-5 h-5 fill-current text-accent" />
+                ))}
+                <span className="ml-2 font-semibold text-text">
+                  4.9/5 Rating
+                </span>
+              </div>
+            </div>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
