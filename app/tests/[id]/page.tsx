@@ -164,7 +164,7 @@ export default function TestDetail() {
                 <FileText className="w-6 h-6 text-primary" />
               </div>
               <div>
-                <h1 className="text-3xl font-bold text-text mb-1 font-heading font-bold">
+                <h1 className="text-3xl text-text mb-1 font-heading font-bold">
                   {test.title}
                 </h1>
                 <div className="flex items-center space-x-4 text-text/70">
