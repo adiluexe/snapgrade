@@ -163,25 +163,27 @@ export default function Dashboard() {
   return (
     <div className="min-h-screen bg-background">
       {/* Navigation */}
-      <nav className="bg-white shadow-sm border-b">
+      <nav className="bg-background p-4">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16">
             <div className="flex items-center">
               <Link href="/" className="flex items-center space-x-2">
-                <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-                  <Zap className="w-5 h-5 text-white" />
+                <div className="flex items-center space-x-2 group">
+                  <Zap className="w-5 h-5 text-text group-hover:text-primary transition-colors duration-300 group-hover:rotate-12 transform" />
+                  <span className="text-xl font-bold font-heading text-text group-hover:text-primary transition-colors duration-300">
+                    SnapGrade
+                  </span>
                 </div>
-                <span className="text-xl font-bold text-text">SnapGrade</span>
               </Link>
             </div>
-            <div className="flex items-center space-x-4">
+            <div className="flex items-center space-x-8 font-heading font-medium">
               {/* Demo Mode Toggle */}
-              <div className="flex items-center space-x-2">
+              <div className="flex items-center space-x-4">
                 <span className="text-sm text-text/70 flex items-center space-x-1">
                   {demoMode ? (
-                    <PlayCircle className="w-4 h-4" />
+                    <PlayCircle className="w-5 h-5" />
                   ) : (
-                    <StopCircle className="w-4 h-4" />
+                    <StopCircle className="w-5 h-5" />
                   )}
                   <span>Demo Mode</span>
                 </span>
@@ -219,7 +221,7 @@ export default function Dashboard() {
       >
         {/* Welcome Section */}
         <div className="welcome-content mb-8">
-          <h1 className="text-3xl font-bold text-text mb-2">
+          <h1 className="text-3xl font-bold font-heading text-text mb-2">
             Welcome back, {user.firstName}!
           </h1>
           <p className="text-text/70 mb-4">
@@ -264,14 +266,14 @@ export default function Dashboard() {
         {/* Quick Actions */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
           <Link href="/tests/create">
-            <div className="quick-action-card bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 cursor-pointer hover:scale-105 group">
+            <div className="quick-action-card bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 cursor-pointer hover:scale-105 group h-full flex flex-col">
               <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-200">
                 <PlusCircle className="w-6 h-6 text-primary" />
               </div>
               <h3 className="text-lg font-bold text-text mb-2">
                 Create New Test
               </h3>
-              <p className="text-text/70 mb-4">
+              <p className="text-text/70 mb-4 flex-1">
                 Set up a new bubble sheet test with answer keys
               </p>
               <button className="text-primary font-medium hover:text-primary/80 flex items-center space-x-1 group-hover:translate-x-1 transition-transform duration-200">
@@ -281,12 +283,12 @@ export default function Dashboard() {
             </div>
           </Link>
 
-          <div className="quick-action-card bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 cursor-pointer hover:scale-105 group">
+          <div className="quick-action-card bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 cursor-pointer hover:scale-105 group h-full flex flex-col">
             <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-200">
               <Camera className="w-6 h-6 text-accent" />
             </div>
             <h3 className="text-lg font-bold text-text mb-2">Scan Sheets</h3>
-            <p className="text-text/70 mb-4">
+            <p className="text-text/70 mb-4 flex-1">
               Use your camera or upload images to scan bubble sheets
             </p>
             <button className="text-primary font-medium hover:text-primary/80 flex items-center space-x-1 group-hover:translate-x-1 transition-transform duration-200">
@@ -295,12 +297,12 @@ export default function Dashboard() {
             </button>
           </div>
 
-          <div className="quick-action-card bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 cursor-pointer hover:scale-105 group">
+          <div className="quick-action-card bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 cursor-pointer hover:scale-105 group h-full flex flex-col">
             <div className="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-200">
               <BarChart3 className="w-6 h-6 text-secondary" />
             </div>
             <h3 className="text-lg font-bold text-text mb-2">View Results</h3>
-            <p className="text-text/70 mb-4">
+            <p className="text-text/70 mb-4 flex-1">
               Access your graded tests and analytics
             </p>
             <button className="text-primary font-medium hover:text-primary/80 flex items-center space-x-1 group-hover:translate-x-1 transition-transform duration-200">
@@ -332,13 +334,13 @@ export default function Dashboard() {
               </Link>
             </div>
           ) : (
-            <div className="space-y-4">
+            <div className="space-y-8">
               {tests
                 .slice(-5)
                 .reverse()
                 .map((test) => (
                   <Link key={test.id} href={`/tests/${test.id}`}>
-                    <div className="test-card border border-gray-200 rounded-lg p-4 hover:border-primary hover:bg-primary/5 transition-all duration-300 cursor-pointer hover:scale-102 hover:shadow-md">
+                    <div className="test-card border border-gray-200 rounded-lg p-4 hover:border-primary hover:bg-primary/5 transition-all duration-300 cursor-pointer hover:scale-102 hover:shadow-md mb-2">
                       <div className="flex justify-between items-start">
                         <div>
                           <h3 className="font-bold text-text mb-1">
