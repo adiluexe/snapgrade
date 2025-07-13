@@ -94,3 +94,86 @@ h2, h3, h4, h5, h6 {
   font-style: normal;
 }
 
+/* GSAP Animation Enhancements */
+.hero-title {
+  transform-origin: center;
+}
+
+.feature-card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.feature-card:hover {
+  transform: translateY(-8px) scale(1.02);
+}
+
+.step-item {
+  transition: all 0.3s ease;
+}
+
+.step-item:hover {
+  transform: translateY(-5px);
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(88, 187, 185, 0.7); }
+  50% { box-shadow: 0 0 0 10px rgba(88, 187, 185, 0); }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s infinite;
+}
+
+/* Gradient text animation */
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.gradient-text-animate {
+  background: linear-gradient(-45deg, var(--color-primary), var(--color-accent), var(--color-secondary), var(--color-primary));
+  background-size: 400% 400%;
+  animation: gradient-shift 4s ease infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Button hover effects */
+.btn-hover-lift {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-hover-lift:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Loading animations */
+@keyframes shimmer {
+  0% { background-position: -200px 0; }
+  100% { background-position: calc(200px + 100%) 0; }
+}
+
+.shimmer {
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  background-size: 200px 100%;
+  animation: shimmer 1.5s infinite;
+}
+

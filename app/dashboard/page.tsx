@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { getDemoMode, setDemoMode } from "@/lib/bubblesheet";
@@ -16,6 +16,8 @@ import {
   PlayCircle,
   StopCircle,
 } from "lucide-react";
+import { gsap } from "gsap";
+import { fadeInUp, staggerAnimation } from "@/lib/animations";
 
 interface User {
   id: string;
@@ -40,6 +42,7 @@ export default function Dashboard() {
   const [tests, setTests] = useState<Test[]>([]);
   const [loading, setLoading] = useState(true);
   const [demoMode, setDemoModeState] = useState(true);
+  const mainContentRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
 
   useEffect(() => {
@@ -63,6 +66,77 @@ export default function Dashboard() {
 
     setLoading(false);
   }, [router]);
+
+  useEffect(() => {
+    if (!loading && mainContentRef.current) {
+      const ctx = gsap.context(() => {
+        // Main content fade in
+        gsap.fromTo(
+          mainContentRef.current,
+          { opacity: 0, y: 20 },
+          { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }
+        );
+
+        // Welcome section animation
+        gsap.fromTo(
+          ".welcome-content",
+          { opacity: 0, y: 30 },
+          { opacity: 1, y: 0, duration: 0.8, ease: "power2.out", delay: 0.2 }
+        );
+
+        // Demo mode indicator animation
+        gsap.fromTo(
+          ".demo-indicator",
+          { opacity: 0, scale: 0.9 },
+          {
+            opacity: 1,
+            scale: 1,
+            duration: 0.6,
+            ease: "back.out(1.7)",
+            delay: 0.4,
+          }
+        );
+
+        // Quick actions stagger animation
+        gsap.fromTo(
+          ".quick-action-card",
+          { opacity: 0, y: 40, scale: 0.9 },
+          {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            duration: 0.6,
+            ease: "power3.out",
+            stagger: 0.15,
+            delay: 0.6,
+          }
+        );
+
+        // Recent tests section animation
+        gsap.fromTo(
+          ".recent-tests-section",
+          { opacity: 0, y: 30 },
+          { opacity: 1, y: 0, duration: 0.8, ease: "power2.out", delay: 1 }
+        );
+
+        // Test cards stagger animation
+        gsap.fromTo(
+          ".test-card",
+          { opacity: 0, x: -20 },
+          {
+            opacity: 1,
+            x: 0,
+            duration: 0.5,
+            ease: "power2.out",
+            stagger: 0.1,
+            delay: 1.2,
+          }
+        );
+      }, mainContentRef);
+
+      return () => ctx.revert();
+    }
+  }, [loading]);
 
   const handleDemoModeToggle = (enabled: boolean) => {
     setDemoModeState(enabled);
@@ -139,9 +213,12 @@ export default function Dashboard() {
       </nav>
 
       {/* Main Content */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <main
+        ref={mainContentRef}
+        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8"
+      >
         {/* Welcome Section */}
-        <div className="mb-8">
+        <div className="welcome-content mb-8">
           <h1 className="text-3xl font-bold text-text mb-2">
             Welcome back, {user.firstName}!
           </h1>
@@ -152,7 +229,7 @@ export default function Dashboard() {
 
           {/* Demo Mode Indicator */}
           <div
-            className={`p-4 rounded-lg border ${
+            className={`demo-indicator p-4 rounded-lg border ${
               demoMode
                 ? "bg-blue-50 border-blue-200"
                 : "bg-green-50 border-green-200"
@@ -187,8 +264,8 @@ export default function Dashboard() {
         {/* Quick Actions */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
           <Link href="/tests/create">
-            <div className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow cursor-pointer">
-              <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+            <div className="quick-action-card bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 cursor-pointer hover:scale-105 group">
+              <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-200">
                 <PlusCircle className="w-6 h-6 text-primary" />
               </div>
               <h3 className="text-lg font-bold text-text mb-2">
@@ -197,36 +274,36 @@ export default function Dashboard() {
               <p className="text-text/70 mb-4">
                 Set up a new bubble sheet test with answer keys
               </p>
-              <button className="text-primary font-medium hover:text-primary/80 flex items-center space-x-1">
+              <button className="text-primary font-medium hover:text-primary/80 flex items-center space-x-1 group-hover:translate-x-1 transition-transform duration-200">
                 <span>Get Started</span>
                 <ChevronRight className="w-4 h-4" />
               </button>
             </div>
           </Link>
 
-          <div className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow cursor-pointer">
-            <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center mb-4">
+          <div className="quick-action-card bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 cursor-pointer hover:scale-105 group">
+            <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-200">
               <Camera className="w-6 h-6 text-accent" />
             </div>
             <h3 className="text-lg font-bold text-text mb-2">Scan Sheets</h3>
             <p className="text-text/70 mb-4">
               Use your camera or upload images to scan bubble sheets
             </p>
-            <button className="text-primary font-medium hover:text-primary/80 flex items-center space-x-1">
+            <button className="text-primary font-medium hover:text-primary/80 flex items-center space-x-1 group-hover:translate-x-1 transition-transform duration-200">
               <span>Start Scanning</span>
               <ChevronRight className="w-4 h-4" />
             </button>
           </div>
 
-          <div className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow cursor-pointer">
-            <div className="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center mb-4">
+          <div className="quick-action-card bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 cursor-pointer hover:scale-105 group">
+            <div className="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-200">
               <BarChart3 className="w-6 h-6 text-secondary" />
             </div>
             <h3 className="text-lg font-bold text-text mb-2">View Results</h3>
             <p className="text-text/70 mb-4">
               Access your graded tests and analytics
             </p>
-            <button className="text-primary font-medium hover:text-primary/80 flex items-center space-x-1">
+            <button className="text-primary font-medium hover:text-primary/80 flex items-center space-x-1 group-hover:translate-x-1 transition-transform duration-200">
               <span>View Results</span>
               <ChevronRight className="w-4 h-4" />
             </button>
@@ -234,7 +311,7 @@ export default function Dashboard() {
         </div>
 
         {/* Recent Tests */}
-        <div className="bg-white rounded-xl shadow-sm p-6">
+        <div className="recent-tests-section bg-white rounded-xl shadow-sm p-6">
           <h2 className="text-xl font-bold text-text mb-4 flex items-center space-x-2">
             <Clock className="w-5 h-5 text-primary" />
             <span>Recent Tests</span>
@@ -261,7 +338,7 @@ export default function Dashboard() {
                 .reverse()
                 .map((test) => (
                   <Link key={test.id} href={`/tests/${test.id}`}>
-                    <div className="border border-gray-200 rounded-lg p-4 hover:border-primary hover:bg-primary/5 transition-all cursor-pointer">
+                    <div className="test-card border border-gray-200 rounded-lg p-4 hover:border-primary hover:bg-primary/5 transition-all duration-300 cursor-pointer hover:scale-102 hover:shadow-md">
                       <div className="flex justify-between items-start">
                         <div>
                           <h3 className="font-bold text-text mb-1">
