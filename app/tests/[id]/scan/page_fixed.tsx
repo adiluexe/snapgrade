@@ -295,7 +295,7 @@ export default function ScanSheets() {
             </div>
 
             {/* Demo Mode Toggle */}
-            <div className="bg-white rounded-xl p-4 shadow-sm hover:shadow-md transition-all duration-300">
+            <div className="bg-white rounded-xl p-4 shadow-sm border hover:shadow-md transition-all duration-300">
               <div className="flex items-center space-x-3">
                 <div className="flex items-center space-x-2">
                   <Zap className="w-4 h-4 text-accent" />
