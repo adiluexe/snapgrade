@@ -3,7 +3,11 @@
 import { useEffect, useState, useRef } from "react";
 import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
-import { downloadBubbleSheetPDF, getDemoMode, setDemoMode } from "@/lib/bubblesheet";
+import {
+  downloadBubbleSheetPDF,
+  getDemoMode,
+  setDemoMode,
+} from "@/lib/bubblesheet";
 
 interface Test {
   id: string;
@@ -37,7 +41,7 @@ export default function ScanSheets() {
   useEffect(() => {
     // Load demo mode setting
     setDemoModeState(getDemoMode());
-    
+
     const testId = params.id as string;
     const tests = JSON.parse(localStorage.getItem("snapgrade_tests") || "[]");
     const foundTest = tests.find((t: Test) => t.id === testId);
@@ -124,7 +128,9 @@ export default function ScanSheets() {
       const file = files[i];
 
       // Simulate processing delay
-      await new Promise((resolve) => setTimeout(resolve, demoMode ? 1000 : 2000));
+      await new Promise((resolve) =>
+        setTimeout(resolve, demoMode ? 1000 : 2000)
+      );
 
       try {
         if (demoMode) {
@@ -134,7 +140,7 @@ export default function ScanSheets() {
         } else {
           // Real mode: would integrate with actual computer vision
           // For now, show a message that real processing isn't implemented
-          console.log('Real processing mode - would analyze:', file.name);
+          console.log("Real processing mode - would analyze:", file.name);
           // TODO: Implement actual bubble sheet scanning
           // This would involve computer vision libraries like OpenCV.js
           const result = simulateBubbleDetection(file.name);
@@ -221,7 +227,7 @@ export default function ScanSheets() {
               </h1>
               <p className="text-text/70">Test: {test.title}</p>
             </div>
-            
+
             {/* Demo Mode Toggle */}
             <div className="bg-white rounded-lg p-4 shadow-sm border">
               <div className="flex items-center space-x-3">
@@ -229,17 +235,17 @@ export default function ScanSheets() {
                 <button
                   onClick={() => handleDemoModeToggle(!demoMode)}
                   className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
-                    demoMode ? 'bg-primary' : 'bg-gray-200'
+                    demoMode ? "bg-primary" : "bg-gray-200"
                   }`}
                 >
                   <span
                     className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
-                      demoMode ? 'translate-x-6' : 'translate-x-1'
+                      demoMode ? "translate-x-6" : "translate-x-1"
                     }`}
                   />
                 </button>
                 <div className="text-xs text-text/70">
-                  {demoMode ? 'Simulated scanning' : 'Real processing'}
+                  {demoMode ? "Simulated scanning" : "Real processing"}
                 </div>
               </div>
             </div>
@@ -301,8 +307,9 @@ export default function ScanSheets() {
             {!demoMode && (
               <div className="mt-6 bg-blue-50 border border-blue-200 text-blue-800 px-4 py-3 rounded-lg">
                 <p className="text-sm">
-                  <strong>Real Processing Mode:</strong> Ready for actual bubble sheet scanning.
-                  Computer vision processing will analyze uploaded images for filled bubbles.
+                  <strong>Real Processing Mode:</strong> Ready for actual bubble
+                  sheet scanning. Computer vision processing will analyze
+                  uploaded images for filled bubbles.
                 </p>
               </div>
             )}

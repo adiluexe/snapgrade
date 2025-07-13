@@ -93,13 +93,13 @@ export default function Dashboard() {
                 <button
                   onClick={() => handleDemoModeToggle(!demoMode)}
                   className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 ${
-                    demoMode ? 'bg-primary' : 'bg-gray-200'
+                    demoMode ? "bg-primary" : "bg-gray-200"
                   }`}
                 >
                   <span className="sr-only">Enable demo mode</span>
                   <span
                     className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
-                      demoMode ? 'translate-x-6' : 'translate-x-1'
+                      demoMode ? "translate-x-6" : "translate-x-1"
                     }`}
                   />
                 </button>
@@ -127,30 +127,37 @@ export default function Dashboard() {
             Ready to start grading? Create a new test or manage your existing
             ones.
           </p>
-          
+
           {/* Demo Mode Indicator */}
-          <div className={`p-4 rounded-lg border ${
-            demoMode 
-              ? 'bg-blue-50 border-blue-200' 
-              : 'bg-green-50 border-green-200'
-          }`}>
+          <div
+            className={`p-4 rounded-lg border ${
+              demoMode
+                ? "bg-blue-50 border-blue-200"
+                : "bg-green-50 border-green-200"
+            }`}
+          >
             <div className="flex items-center space-x-2">
-              <div className={`w-3 h-3 rounded-full ${
-                demoMode ? 'bg-blue-500' : 'bg-green-500'
-              }`}></div>
-              <span className={`font-medium ${
-                demoMode ? 'text-blue-700' : 'text-green-700'
-              }`}>
-                {demoMode ? 'Demo Mode Active' : 'Live Mode Active'}
+              <div
+                className={`w-3 h-3 rounded-full ${
+                  demoMode ? "bg-blue-500" : "bg-green-500"
+                }`}
+              ></div>
+              <span
+                className={`font-medium ${
+                  demoMode ? "text-blue-700" : "text-green-700"
+                }`}
+              >
+                {demoMode ? "Demo Mode Active" : "Live Mode Active"}
               </span>
             </div>
-            <p className={`text-sm mt-1 ${
-              demoMode ? 'text-blue-600' : 'text-green-600'
-            }`}>
-              {demoMode 
-                ? 'Scanning will generate simulated results for testing purposes'
-                : 'Scanning will process actual bubble sheet images'
-              }
+            <p
+              className={`text-sm mt-1 ${
+                demoMode ? "text-blue-600" : "text-green-600"
+              }`}
+            >
+              {demoMode
+                ? "Scanning will generate simulated results for testing purposes"
+                : "Scanning will process actual bubble sheet images"}
             </p>
           </div>
         </div>

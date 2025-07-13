@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { templateConfigs } from '@/lib/bubblesheet';
+import { templateConfigs } from "@/lib/bubblesheet";
 
 export default function CreateTest() {
   const [testData, setTestData] = useState({
@@ -25,7 +25,7 @@ export default function CreateTest() {
     id: key,
     name: config.name,
     questions: parseInt(key),
-    description: config.description
+    description: config.description,
   }));
 
   const answerOptions = ["A", "B", "C", "D", "E"];
@@ -269,9 +269,15 @@ export default function CreateTest() {
                       }`}
                       onClick={() => handleTemplateChange(template.id)}
                     >
-                      <h3 className="font-bold text-text text-sm">{template.name}</h3>
-                      <p className="text-xs text-text/70 mt-1">{template.description}</p>
-                      <p className="text-xs text-primary mt-1">{template.questions} questions</p>
+                      <h3 className="font-bold text-text text-sm">
+                        {template.name}
+                      </h3>
+                      <p className="text-xs text-text/70 mt-1">
+                        {template.description}
+                      </p>
+                      <p className="text-xs text-primary mt-1">
+                        {template.questions} questions
+                      </p>
                     </div>
                   ))}
                 </div>
