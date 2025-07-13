@@ -145,6 +145,19 @@ export default function Dashboard() {
           }
         );
 
+        // Quick Actions header animation
+        gsap.fromTo(
+          ".quick-actions-header",
+          { opacity: 0, x: -30 },
+          {
+            opacity: 1,
+            x: 0,
+            duration: 0.8,
+            ease: "power2.out",
+            delay: 0.6,
+          }
+        );
+
         // Quick actions animation
         gsap.fromTo(
           ".quick-action-card",
@@ -156,7 +169,7 @@ export default function Dashboard() {
             duration: 0.7,
             ease: "power3.out",
             stagger: 0.15,
-            delay: 0.7,
+            delay: 0.8,
           }
         );
 
@@ -462,7 +475,7 @@ export default function Dashboard() {
 
         {/* Quick Actions */}
         <div ref={actionsRef} className="mb-8">
-          <div className="flex items-center space-x-3 mb-6">
+          <div className="quick-actions-header flex items-center space-x-3 mb-6">
             <div className="w-10 h-10 bg-gradient-to-br from-primary/20 to-primary/10 rounded-xl flex items-center justify-center">
               <Sparkles className="w-5 h-5 text-primary" />
             </div>
