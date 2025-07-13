@@ -1,0 +1,85 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f5fafa;
+  --foreground: #091515;
+  --color-text: #091515;
+  --color-background: #f5fafa;
+  --color-primary: #58bbb9;
+  --color-secondary: #97afd3;
+  --color-accent: #7a84c7;
+  --font-cabinet: 'Cabinet Grotesk', Arial, Helvetica, sans-serif;
+  --font-hind: 'Hind', Arial, Helvetica, sans-serif;
+}
+
+@theme inline {
+  --color-background: var(--color-background);
+  --color-foreground: var(--color-text);
+  --color-primary: var(--color-primary);
+  --color-secondary: var(--color-secondary);
+  --color-accent: var(--color-accent);
+  --font-heading: var(--font-cabinet);
+  --font-body: var(--font-hind);
+}
+
+body {
+  background: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-body);
+}
+
+@font-face {
+  font-family: 'Cabinet Grotesk';
+  src: url('/fonts/cabinet/CabinetGrotesk-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Cabinet Grotesk';
+  src: url('/fonts/cabinet/CabinetGrotesk-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Cabinet Grotesk';
+  src: url('/fonts/cabinet/CabinetGrotesk-Light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Cabinet Grotesk';
+  src: url('/fonts/cabinet/CabinetGrotesk-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Hind';
+  src: url('/fonts/hind/Hind-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Hind';
+  src: url('/fonts/hind/Hind-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Hind';
+  src: url('/fonts/hind/Hind-Light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Hind';
+  src: url('/fonts/hind/Hind-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Hind';
+  src: url('/fonts/hind/Hind-SemiBold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+}
+
