@@ -1,6 +1,15 @@
+'use client';
+
 import Image from "next/image";
+import Link from "next/link";
+import { useEffect } from "react";
+import { initializeDemoData } from "@/lib/auth";
 
 export default function Home() {
+  useEffect(() => {
+    // Initialize demo data on page load
+    initializeDemoData();
+  }, []);
   return (
     <div className="min-h-screen bg-background">
       {/* Navigation */}
@@ -30,12 +39,16 @@ export default function Home() {
           </a>
         </div>
         <div className="flex items-center space-x-4">
-          <button className="text-text hover:text-primary transition-colors">
-            Sign In
-          </button>
-          <button className="bg-primary text-white px-6 py-2 rounded-lg hover:bg-opacity-90 transition-all">
-            Get Started
-          </button>
+          <Link href="/auth/signin">
+            <button className="text-text hover:text-primary transition-colors">
+              Sign In
+            </button>
+          </Link>
+          <Link href="/auth/signup">
+            <button className="bg-primary text-white px-6 py-2 rounded-lg hover:bg-opacity-90 transition-all">
+              Get Started
+            </button>
+          </Link>
         </div>
       </nav>
 
@@ -56,9 +69,11 @@ export default function Home() {
             results, comprehensive analytics, and export data seamlessly.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <button className="bg-primary text-white px-8 py-4 rounded-lg text-lg font-medium hover:bg-opacity-90 transition-all w-full sm:w-auto">
-              Start Grading Now
-            </button>
+            <Link href="/auth/signup">
+              <button className="bg-primary text-white px-8 py-4 rounded-lg text-lg font-medium hover:bg-opacity-90 transition-all w-full sm:w-auto">
+                Start Grading Now
+              </button>
+            </Link>
             <button className="border-2 border-secondary text-secondary px-8 py-4 rounded-lg text-lg font-medium hover:bg-secondary hover:text-white transition-all w-full sm:w-auto">
               Watch Demo
             </button>
@@ -212,9 +227,11 @@ export default function Home() {
             Join thousands of educators who have already simplified their
             grading process with SnapGrade.
           </p>
-          <button className="bg-primary text-white px-8 py-4 rounded-lg text-lg font-medium hover:bg-opacity-90 transition-all">
-            Get Started for Free
-          </button>
+          <Link href="/auth/signup">
+            <button className="bg-primary text-white px-8 py-4 rounded-lg text-lg font-medium hover:bg-opacity-90 transition-all">
+              Get Started for Free
+            </button>
+          </Link>
         </div>
       </section>
 
@@ -225,14 +242,14 @@ export default function Home() {
             <div>
               <div className="flex items-center space-x-2 mb-4">
                 <div className="w-8 h-8 bg-primary rounded-lg"></div>
-                <span className="text-xl font-bold">SnapGrade</span>
+                <span className="text-xl font-bold text-background">SnapGrade</span>
               </div>
               <p className="text-background/80">
                 Making grading efficient and accurate for educators worldwide.
               </p>
             </div>
             <div>
-              <h4 className="font-bold mb-4">Product</h4>
+              <h4 className="font-bold mb-4 text-background">Product</h4>
               <ul className="space-y-2 text-background/80">
                 <li>
                   <a href="#" className="hover:text-primary transition-colors">
@@ -252,7 +269,7 @@ export default function Home() {
               </ul>
             </div>
             <div>
-              <h4 className="font-bold mb-4">Support</h4>
+              <h4 className="font-bold mb-4 text-background">Support</h4>
               <ul className="space-y-2 text-background/80">
                 <li>
                   <a href="#" className="hover:text-primary transition-colors">
@@ -272,7 +289,7 @@ export default function Home() {
               </ul>
             </div>
             <div>
-              <h4 className="font-bold mb-4">Company</h4>
+              <h4 className="font-bold mb-4 text-background">Company</h4>
               <ul className="space-y-2 text-background/80">
                 <li>
                   <a href="#" className="hover:text-primary transition-colors">
