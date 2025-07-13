@@ -4,6 +4,19 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { templateConfigs } from "@/lib/bubblesheet";
+import {
+  ArrowLeft,
+  ArrowRight,
+  FileText,
+  Settings,
+  Key,
+  CheckCircle,
+  Users,
+  Clock,
+  Target,
+  BookOpen,
+  GraduationCap,
+} from "lucide-react";
 
 export default function CreateTest() {
   const [testData, setTestData] = useState({
@@ -118,16 +131,19 @@ export default function CreateTest() {
           <div className="flex justify-between h-16">
             <div className="flex items-center">
               <Link href="/dashboard" className="flex items-center space-x-2">
-                <div className="w-8 h-8 bg-primary rounded-lg"></div>
+                <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+                  <FileText className="w-5 h-5 text-white" />
+                </div>
                 <span className="text-xl font-bold text-text">SnapGrade</span>
               </Link>
             </div>
             <div className="flex items-center">
               <Link
                 href="/dashboard"
-                className="text-text hover:text-primary transition-colors"
+                className="text-text hover:text-primary transition-colors flex items-center space-x-2"
               >
-                ← Back to Dashboard
+                <ArrowLeft className="w-4 h-4" />
+                <span>Back to Dashboard</span>
               </Link>
             </div>
           </div>
@@ -148,7 +164,11 @@ export default function CreateTest() {
                   currentStep >= 1 ? "bg-primary text-white" : "bg-gray-200"
                 }`}
               >
-                1
+                {currentStep > 1 ? (
+                  <CheckCircle className="w-4 h-4" />
+                ) : (
+                  <Settings className="w-4 h-4" />
+                )}
               </div>
               <span className="ml-2 font-medium">Test Details</span>
             </div>
@@ -163,7 +183,11 @@ export default function CreateTest() {
                   currentStep >= 2 ? "bg-primary text-white" : "bg-gray-200"
                 }`}
               >
-                2
+                {currentStep > 2 ? (
+                  <CheckCircle className="w-4 h-4" />
+                ) : (
+                  <Key className="w-4 h-4" />
+                )}
               </div>
               <span className="ml-2 font-medium">Answer Key</span>
             </div>
@@ -178,7 +202,7 @@ export default function CreateTest() {
                   currentStep >= 3 ? "bg-primary text-white" : "bg-gray-200"
                 }`}
               >
-                3
+                <CheckCircle className="w-4 h-4" />
               </div>
               <span className="ml-2 font-medium">Review</span>
             </div>

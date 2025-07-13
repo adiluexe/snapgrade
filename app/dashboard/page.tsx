@@ -4,6 +4,18 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { getDemoMode, setDemoMode } from "@/lib/bubblesheet";
+import {
+  Zap,
+  PlusCircle,
+  Camera,
+  BarChart3,
+  LogOut,
+  Clock,
+  Users,
+  ChevronRight,
+  PlayCircle,
+  StopCircle,
+} from "lucide-react";
 
 interface User {
   id: string;
@@ -82,14 +94,23 @@ export default function Dashboard() {
           <div className="flex justify-between h-16">
             <div className="flex items-center">
               <Link href="/" className="flex items-center space-x-2">
-                <div className="w-8 h-8 bg-primary rounded-lg"></div>
+                <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+                  <Zap className="w-5 h-5 text-white" />
+                </div>
                 <span className="text-xl font-bold text-text">SnapGrade</span>
               </Link>
             </div>
             <div className="flex items-center space-x-4">
               {/* Demo Mode Toggle */}
               <div className="flex items-center space-x-2">
-                <span className="text-sm text-text/70">Demo Mode</span>
+                <span className="text-sm text-text/70 flex items-center space-x-1">
+                  {demoMode ? (
+                    <PlayCircle className="w-4 h-4" />
+                  ) : (
+                    <StopCircle className="w-4 h-4" />
+                  )}
+                  <span>Demo Mode</span>
+                </span>
                 <button
                   onClick={() => handleDemoModeToggle(!demoMode)}
                   className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 ${
@@ -107,9 +128,10 @@ export default function Dashboard() {
               <span className="text-text">Welcome, {user.firstName}!</span>
               <button
                 onClick={handleSignOut}
-                className="text-text hover:text-primary transition-colors"
+                className="text-text hover:text-primary transition-colors flex items-center space-x-1"
               >
-                Sign Out
+                <LogOut className="w-4 h-4" />
+                <span>Sign Out</span>
               </button>
             </div>
           </div>
@@ -167,7 +189,7 @@ export default function Dashboard() {
           <Link href="/tests/create">
             <div className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow cursor-pointer">
               <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                <div className="w-6 h-6 bg-primary rounded"></div>
+                <PlusCircle className="w-6 h-6 text-primary" />
               </div>
               <h3 className="text-lg font-bold text-text mb-2">
                 Create New Test
@@ -175,46 +197,52 @@ export default function Dashboard() {
               <p className="text-text/70 mb-4">
                 Set up a new bubble sheet test with answer keys
               </p>
-              <button className="text-primary font-medium hover:text-primary/80">
-                Get Started →
+              <button className="text-primary font-medium hover:text-primary/80 flex items-center space-x-1">
+                <span>Get Started</span>
+                <ChevronRight className="w-4 h-4" />
               </button>
             </div>
           </Link>
 
           <div className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow cursor-pointer">
             <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center mb-4">
-              <div className="w-6 h-6 bg-accent rounded"></div>
+              <Camera className="w-6 h-6 text-accent" />
             </div>
             <h3 className="text-lg font-bold text-text mb-2">Scan Sheets</h3>
             <p className="text-text/70 mb-4">
               Use your camera or upload images to scan bubble sheets
             </p>
-            <button className="text-primary font-medium hover:text-primary/80">
-              Start Scanning →
+            <button className="text-primary font-medium hover:text-primary/80 flex items-center space-x-1">
+              <span>Start Scanning</span>
+              <ChevronRight className="w-4 h-4" />
             </button>
           </div>
 
           <div className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow cursor-pointer">
             <div className="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center mb-4">
-              <div className="w-6 h-6 bg-secondary rounded"></div>
+              <BarChart3 className="w-6 h-6 text-secondary" />
             </div>
             <h3 className="text-lg font-bold text-text mb-2">View Results</h3>
             <p className="text-text/70 mb-4">
               Access your graded tests and analytics
             </p>
-            <button className="text-primary font-medium hover:text-primary/80">
-              View Results →
+            <button className="text-primary font-medium hover:text-primary/80 flex items-center space-x-1">
+              <span>View Results</span>
+              <ChevronRight className="w-4 h-4" />
             </button>
           </div>
         </div>
 
         {/* Recent Tests */}
         <div className="bg-white rounded-xl shadow-sm p-6">
-          <h2 className="text-xl font-bold text-text mb-4">Recent Tests</h2>
+          <h2 className="text-xl font-bold text-text mb-4 flex items-center space-x-2">
+            <Clock className="w-5 h-5 text-primary" />
+            <span>Recent Tests</span>
+          </h2>
           {tests.length === 0 ? (
             <div className="text-center py-12 text-text/70">
               <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <div className="w-8 h-8 bg-gray-300 rounded"></div>
+                <PlusCircle className="w-8 h-8 text-gray-400" />
               </div>
               <p className="text-lg mb-2">No tests yet</p>
               <p className="text-sm">

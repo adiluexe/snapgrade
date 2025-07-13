@@ -4,6 +4,19 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect } from "react";
 import { initializeDemoData } from "@/lib/auth";
+import {
+  Zap,
+  CheckCircle,
+  Camera,
+  BarChart3,
+  Download,
+  Clock,
+  Users,
+  FileText,
+  ArrowRight,
+  Star,
+  ChevronRight,
+} from "lucide-react";
 
 export default function Home() {
   useEffect(() => {
@@ -15,7 +28,9 @@ export default function Home() {
       {/* Navigation */}
       <nav className="flex items-center justify-between px-6 py-4 lg:px-12">
         <div className="flex items-center space-x-2">
-          <div className="w-8 h-8 bg-primary rounded-lg"></div>
+          <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+            <Zap className="w-5 h-5 text-white" />
+          </div>
           <span className="text-xl font-bold text-text">SnapGrade</span>
         </div>
         <div className="hidden md:flex items-center space-x-8">
@@ -40,13 +55,14 @@ export default function Home() {
         </div>
         <div className="flex items-center space-x-4">
           <Link href="/auth/signin">
-            <button className="text-text hover:text-primary transition-colors">
-              Sign In
+            <button className="text-text hover:text-primary transition-colors flex items-center space-x-2">
+              <span>Sign In</span>
             </button>
           </Link>
           <Link href="/auth/signup">
-            <button className="bg-primary text-white px-6 py-2 rounded-lg hover:bg-opacity-90 transition-all">
-              Get Started
+            <button className="bg-primary text-white px-6 py-2 rounded-lg hover:bg-opacity-90 transition-all flex items-center space-x-2">
+              <span>Get Started</span>
+              <ArrowRight className="w-4 h-4" />
             </button>
           </Link>
         </div>
@@ -70,12 +86,14 @@ export default function Home() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Link href="/auth/signup">
-              <button className="bg-primary text-white px-8 py-4 rounded-lg text-lg font-medium hover:bg-opacity-90 transition-all w-full sm:w-auto">
-                Start Grading Now
+              <button className="bg-primary text-white px-8 py-4 rounded-lg text-lg font-medium hover:bg-opacity-90 transition-all w-full sm:w-auto flex items-center justify-center space-x-2">
+                <Zap className="w-5 h-5" />
+                <span>Start Grading Now</span>
               </button>
             </Link>
-            <button className="border-2 border-secondary text-secondary px-8 py-4 rounded-lg text-lg font-medium hover:bg-secondary hover:text-white transition-all w-full sm:w-auto">
-              Watch Demo
+            <button className="border-2 border-secondary text-secondary px-8 py-4 rounded-lg text-lg font-medium hover:bg-secondary hover:text-white transition-all w-full sm:w-auto flex items-center justify-center space-x-2">
+              <Camera className="w-5 h-5" />
+              <span>Watch Demo</span>
             </button>
           </div>
         </div>
@@ -90,7 +108,7 @@ export default function Home() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div className="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow">
               <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
-                <div className="w-6 h-6 bg-primary rounded"></div>
+                <Camera className="w-6 h-6 text-primary" />
               </div>
               <h3 className="text-xl font-bold text-text mb-4">
                 Webcam Scanning
@@ -103,7 +121,7 @@ export default function Home() {
 
             <div className="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow">
               <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center mb-6">
-                <div className="w-6 h-6 bg-accent rounded"></div>
+                <Zap className="w-6 h-6 text-accent" />
               </div>
               <h3 className="text-xl font-bold text-text mb-4">
                 AI-Powered Detection
@@ -116,7 +134,7 @@ export default function Home() {
 
             <div className="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow">
               <div className="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center mb-6">
-                <div className="w-6 h-6 bg-secondary rounded"></div>
+                <BarChart3 className="w-6 h-6 text-secondary" />
               </div>
               <h3 className="text-xl font-bold text-text mb-4">
                 Instant Analytics
@@ -129,7 +147,7 @@ export default function Home() {
 
             <div className="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow">
               <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
-                <div className="w-6 h-6 bg-primary rounded"></div>
+                <Download className="w-6 h-6 text-primary" />
               </div>
               <h3 className="text-xl font-bold text-text mb-4">Easy Export</h3>
               <p className="text-text/70">
@@ -140,7 +158,7 @@ export default function Home() {
 
             <div className="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow">
               <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center mb-6">
-                <div className="w-6 h-6 bg-accent rounded"></div>
+                <FileText className="w-6 h-6 text-accent" />
               </div>
               <h3 className="text-xl font-bold text-text mb-4">
                 Multiple Templates
@@ -153,7 +171,7 @@ export default function Home() {
 
             <div className="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow">
               <div className="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center mb-6">
-                <div className="w-6 h-6 bg-secondary rounded"></div>
+                <Users className="w-6 h-6 text-secondary" />
               </div>
               <h3 className="text-xl font-bold text-text mb-4">
                 Student Management
@@ -175,8 +193,8 @@ export default function Home() {
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="text-center">
-              <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center text-white text-2xl font-bold mb-6 mx-auto">
-                1
+              <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mb-6 mx-auto">
+                <FileText className="w-8 h-8 text-white" />
               </div>
               <h3 className="text-lg font-bold text-text mb-4">Create Test</h3>
               <p className="text-text/70">
@@ -185,8 +203,8 @@ export default function Home() {
             </div>
 
             <div className="text-center">
-              <div className="w-16 h-16 bg-accent rounded-full flex items-center justify-center text-white text-2xl font-bold mb-6 mx-auto">
-                2
+              <div className="w-16 h-16 bg-accent rounded-full flex items-center justify-center mb-6 mx-auto">
+                <Camera className="w-8 h-8 text-white" />
               </div>
               <h3 className="text-lg font-bold text-text mb-4">Scan Sheets</h3>
               <p className="text-text/70">
@@ -195,8 +213,8 @@ export default function Home() {
             </div>
 
             <div className="text-center">
-              <div className="w-16 h-16 bg-secondary rounded-full flex items-center justify-center text-white text-2xl font-bold mb-6 mx-auto">
-                3
+              <div className="w-16 h-16 bg-secondary rounded-full flex items-center justify-center mb-6 mx-auto">
+                <Zap className="w-8 h-8 text-white" />
               </div>
               <h3 className="text-lg font-bold text-text mb-4">Auto Grade</h3>
               <p className="text-text/70">
@@ -205,8 +223,8 @@ export default function Home() {
             </div>
 
             <div className="text-center">
-              <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center text-white text-2xl font-bold mb-6 mx-auto">
-                4
+              <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mb-6 mx-auto">
+                <BarChart3 className="w-8 h-8 text-white" />
               </div>
               <h3 className="text-lg font-bold text-text mb-4">View Results</h3>
               <p className="text-text/70">
@@ -228,8 +246,10 @@ export default function Home() {
             grading process with SnapGrade.
           </p>
           <Link href="/auth/signup">
-            <button className="bg-primary text-white px-8 py-4 rounded-lg text-lg font-medium hover:bg-opacity-90 transition-all">
-              Get Started for Free
+            <button className="bg-primary text-white px-8 py-4 rounded-lg text-lg font-medium hover:bg-opacity-90 transition-all flex items-center justify-center space-x-2 mx-auto">
+              <Star className="w-5 h-5" />
+              <span>Get Started for Free</span>
+              <ArrowRight className="w-5 h-5" />
             </button>
           </Link>
         </div>

@@ -8,6 +8,19 @@ import {
   getDemoMode,
   setDemoMode,
 } from "@/lib/bubblesheet";
+import {
+  Upload,
+  Camera,
+  Download,
+  FileText,
+  ArrowLeft,
+  PlayCircle,
+  StopCircle,
+  Zap,
+  CheckCircle,
+  AlertCircle,
+  Users,
+} from "lucide-react";
 
 interface Test {
   id: string;
