@@ -440,7 +440,7 @@ export default function Home() {
         </div>
         <div className="flex items-center space-x-4">
           <Link href="/auth/signin">
-            <button className="text-text hover:text-primary transition-all duration-300 flex items-center space-x-2 px-4 py-2 rounded-lg hover:bg-primary/10 group">
+            <button className="text-text hover:text-primary transition-all duration-300 flex items-center space-x-2 px-4 py-2 rounded-lg s group">
               <span>Sign In</span>
               <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
             </button>
@@ -854,7 +854,7 @@ export default function Home() {
           <div className="text-center mb-16">
             <h2 className="text-4xl lg:text-5xl font-bold text-text mb-6 leading-tight">
               Loved by{" "}
-              <span className="bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent font-black relative">
+              <span className="bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent font-bold relative">
                 educators
                 <span className="absolute inset-0 bg-gradient-to-r from-primary/20 via-accent/20 to-secondary/20 blur-lg -z-10"></span>
               </span>{" "}
@@ -964,12 +964,12 @@ export default function Home() {
       {/* CTA Section */}
       <section
         ref={ctaRef}
-        className="px-6 py-24 lg:px-12 bg-gradient-to-br from-primary/20 via-accent/20 to-secondary/20 relative overflow-hidden"
+        className="px-6 py-24 lg:px-12 bg-gradient-to-br from-primary/10 via-accent/10 to-secondary/10 relative overflow-hidden"
       >
         {/* Background decoration */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-20 left-20 w-96 h-96 bg-gradient-to-br from-primary/30 to-transparent rounded-full blur-3xl"></div>
-          <div className="absolute bottom-20 right-20 w-96 h-96 bg-gradient-to-br from-accent/30 to-transparent rounded-full blur-3xl"></div>
+          <div className="absolute top-20 left-20 w-96 h-96 bg-gradient-to-br from-primary/10 to-transparent rounded-full blur-3xl"></div>
+          <div className="absolute bottom-20 right-20 w-96 h-96 bg-gradient-to-br from-accent/10 to-transparent rounded-full blur-3xl"></div>
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-br from-secondary/20 to-transparent rounded-full blur-3xl"></div>
         </div>
 
@@ -1202,7 +1202,7 @@ export default function Home() {
           </div>
 
           {/* Bottom section */}
-          <div className="border-t border-white/20 pt-8">
+          <div className="border-t border-white/20 pt-8 font-heading font-medium">
             <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
               <div className="flex items-center space-x-6 text-text/60">
                 <p>&copy; 2025 SnapGrade. All rights reserved.</p>
