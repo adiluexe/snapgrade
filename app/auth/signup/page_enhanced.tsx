@@ -14,6 +14,12 @@ import {
   AlertCircle,
   CheckCircle,
   Sparkles,
+  BookOpen,
+  Users,
+  BarChart3,
+  GraduationCap,
+  Camera,
+  TrendingUp,
   Building,
   Shield,
   Star,
@@ -152,11 +158,7 @@ export default function SignUp() {
       );
 
       // Check if user already exists
-      if (
-        existingUsers.find(
-          (user: { email: string }) => user.email === formData.email
-        )
-      ) {
+      if (existingUsers.find((user: any) => user.email === formData.email)) {
         setError("An account with this email already exists");
         setLoading(false);
         return;
@@ -188,7 +190,7 @@ export default function SignUp() {
         repeat: 1,
         onComplete: () => router.push("/dashboard"),
       });
-    } catch {
+    } catch (err) {
       setError("Something went wrong. Please try again.");
     }
 
@@ -211,7 +213,7 @@ export default function SignUp() {
               Join the Revolution
             </h3>
             <p className="text-lg text-text/70 leading-relaxed">
-              Transform your classroom with SnapGrade&apos;s intelligent grading
+              Transform your classroom with SnapGrade's intelligent grading
               system.
             </p>
           </div>
@@ -304,12 +306,15 @@ export default function SignUp() {
           <div ref={logoRef} className="text-center">
             <Link
               href="/"
-              className="inline-flex items-center space-x-1 mb-4 group"
+              className="inline-flex items-center space-x-3 mb-8 group"
             >
-              <Zap className="w-5 h-5 text-text group-hover:text-primary transition-colors duration-300 group-hover:rotate-12 transform" />
-              <span className="text-xl font-bold font-heading text-text group-hover:text-primary transition-colors duration-300">
+              <div className="w-12 h-12 bg-gradient-to-br from-secondary to-secondary/80 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                <Zap className="w-6 h-6 text-white" />
+              </div>
+              <span className="text-3xl font-bold font-heading text-text group-hover:text-secondary transition-colors">
                 SnapGrade
               </span>
+              <Sparkles className="w-5 h-5 text-accent sparkle-icon" />
             </Link>
             <h2 className="text-4xl font-bold font-heading text-text mb-3">
               Create Account

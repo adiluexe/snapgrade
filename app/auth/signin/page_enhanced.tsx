@@ -11,7 +11,9 @@ import {
   EyeOff,
   ArrowRight,
   AlertCircle,
+  CheckCircle,
   Sparkles,
+  BookOpen,
   Users,
   BarChart3,
   GraduationCap,
@@ -93,8 +95,7 @@ export default function SignIn() {
       // Simulate API call - in prototype, we'll just check localStorage
       const users = JSON.parse(localStorage.getItem("snapgrade_users") || "[]");
       const user = users.find(
-        (u: { email: string; password: string }) =>
-          u.email === email && u.password === password
+        (u: any) => u.email === email && u.password === password
       );
 
       if (user) {
@@ -123,7 +124,7 @@ export default function SignIn() {
           },
         });
       }
-    } catch {
+    } catch (err) {
       setError("Something went wrong. Please try again.");
     }
 
@@ -144,13 +145,16 @@ export default function SignIn() {
               href="/"
               className="inline-flex items-center space-x-1 mb-4 group"
             >
-              <Zap className="w-5 h-5 text-text group-hover:text-primary transition-colors duration-300 group-hover:rotate-12 transform" />
-              <span className="text-xl font-bold font-heading text-text group-hover:text-primary transition-colors duration-300">
+              <div className="w-12 h-12 bg-gradient-to-br from-primary to-primary/80 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                <Zap className="w-6 h-6 text-white" />
+              </div>
+              <span className="text-3xl font-bold font-heading text-text group-hover:text-primary transition-colors">
                 SnapGrade
               </span>
+              <Sparkles className="w-5 h-5 text-accent sparkle-icon" />
             </Link>
             <h2 className="text-4xl font-bold font-heading text-text mb-3">
-              Welcome Back
+              Welcome back!
             </h2>
             <p className="text-lg text-text/70">
               Sign in to continue grading with ease
@@ -269,51 +273,6 @@ export default function SignIn() {
               </button>
             </div>
 
-            {/* Demo Access Button */}
-            <div className="relative">
-              <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-gray-300" />
-              </div>
-              <div className="relative flex justify-center text-sm">
-                <span className="px-2 bg-white text-text/50">or</span>
-              </div>
-            </div>
-
-            <div>
-              <button
-                type="button"
-                onClick={() => {
-                  // Create a demo user and sign them in
-                  const demoUser = {
-                    id: "demo_user",
-                    firstName: "Demo",
-                    lastName: "User",
-                    email: "demo@snapgrade.com",
-                    school: "Demo School",
-                    createdAt: new Date().toISOString(),
-                  };
-                  localStorage.setItem(
-                    "snapgrade_current_user",
-                    JSON.stringify(demoUser)
-                  );
-
-                  // Success animation before redirect
-                  gsap.to(formRef.current, {
-                    scale: 1.05,
-                    duration: 0.2,
-                    yoyo: true,
-                    repeat: 1,
-                    onComplete: () => router.push("/dashboard"),
-                  });
-                }}
-                className="group relative w-full flex justify-center items-center space-x-2 py-3 px-4 border-2 border-dashed border-accent text-sm font-semibold rounded-xl text-accent bg-accent/5 hover:bg-accent/10 hover:border-accent/80 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent transition-all duration-300 hover:scale-105"
-              >
-                <Sparkles className="w-4 h-4" />
-                <span>Quick Demo Access</span>
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-              </button>
-            </div>
-
             {/* Sign Up Link */}
             <div className="text-center pt-4 border-t border-gray-200">
               <p className="text-sm text-text/70">
@@ -341,8 +300,8 @@ export default function SignIn() {
               Streamline Your Grading
             </h3>
             <p className="text-lg text-text/70 leading-relaxed">
-              Experience the future of bubble sheet grading with
-              SnapGrade&apos;s powerful features.
+              Experience the future of bubble sheet grading with SnapGrade's
+              powerful features.
             </p>
           </div>
 
