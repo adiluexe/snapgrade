@@ -16,6 +16,7 @@ import {
   ArrowRight,
   Star,
   ChevronRight,
+  BookCheck,
 } from "lucide-react";
 
 export default function Home() {
@@ -28,12 +29,12 @@ export default function Home() {
       {/* Navigation */}
       <nav className="flex items-center justify-between px-6 py-4 lg:px-12">
         <div className="flex items-center space-x-2">
-          <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-            <Zap className="w-5 h-5 text-white" />
-          </div>
-          <span className="text-xl font-bold text-text">SnapGrade</span>
+          <Zap className="w-5 h-5 text-text" />
+          <span className="text-xl font-bold font-heading text-text">
+            SnapGrade
+          </span>
         </div>
-        <div className="hidden md:flex items-center space-x-8">
+        <div className="hidden md:flex items-center space-x-8 font-heading font-medium">
           <a
             href="#features"
             className="text-text hover:text-primary transition-colors"
@@ -45,12 +46,6 @@ export default function Home() {
             className="text-text hover:text-primary transition-colors"
           >
             How It Works
-          </a>
-          <a
-            href="#pricing"
-            className="text-text hover:text-primary transition-colors"
-          >
-            Pricing
           </a>
         </div>
         <div className="flex items-center space-x-4">
@@ -69,10 +64,10 @@ export default function Home() {
       </nav>
 
       {/* Hero Section */}
-      <section className="px-6 py-20 lg:px-12 lg:py-32">
+      <section className="min-h-screen flex items-center justify-center px-6 py-20 lg:px-12 lg:py-32">
         <div className="max-w-6xl mx-auto text-center">
-          <h1 className="text-5xl lg:text-7xl font-bold mb-6">
-            <span className="bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent">
+          <h1 className="font-black font-heading text-5xl lg:text-7xl mb-6">
+            <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent tracking-normal">
               SnapGrade
             </span>
           </h1>
@@ -256,23 +251,23 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="px-6 py-12 lg:px-12 bg-text text-background">
+      <footer className="px-6 py-12 lg:px-12 bg-text text-text">
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-4 gap-8">
             <div>
               <div className="flex items-center space-x-2 mb-4">
-                <div className="w-8 h-8 bg-primary rounded-lg"></div>
-                <span className="text-xl font-bold text-background">
+                <Zap className="w-5 h-5 text-text" />
+                <span className="text-xl font-bold font-heading text-text">
                   SnapGrade
                 </span>
               </div>
-              <p className="text-background/80">
+              <p className="text-text/80">
                 Making grading efficient and accurate for educators worldwide.
               </p>
             </div>
             <div>
-              <h4 className="font-bold mb-4 text-background">Product</h4>
-              <ul className="space-y-2 text-background/80">
+              <h4 className="font-bold mb-4 text-text">Product</h4>
+              <ul className="space-y-2 text-text/80">
                 <li>
                   <a href="#" className="hover:text-primary transition-colors">
                     Features
@@ -291,8 +286,8 @@ export default function Home() {
               </ul>
             </div>
             <div>
-              <h4 className="font-bold mb-4 text-background">Support</h4>
-              <ul className="space-y-2 text-background/80">
+              <h4 className="font-bold mb-4 text-text">Support</h4>
+              <ul className="space-y-2 text-text/80">
                 <li>
                   <a href="#" className="hover:text-primary transition-colors">
                     Help Center
@@ -311,8 +306,8 @@ export default function Home() {
               </ul>
             </div>
             <div>
-              <h4 className="font-bold mb-4 text-background">Company</h4>
-              <ul className="space-y-2 text-background/80">
+              <h4 className="font-bold mb-4 text-text">Company</h4>
+              <ul className="space-y-2 text-text/80">
                 <li>
                   <a href="#" className="hover:text-primary transition-colors">
                     About
@@ -331,7 +326,7 @@ export default function Home() {
               </ul>
             </div>
           </div>
-          <div className="border-t border-background/20 mt-8 pt-8 text-center text-background/60">
+          <div className="border-t border-background/20 mt-8 pt-8 text-center text-text/60">
             <p>&copy; 2025 SnapGrade. All rights reserved.</p>
           </div>
         </div>

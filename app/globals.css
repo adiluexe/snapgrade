@@ -28,7 +28,7 @@ body {
   font-family: var(--font-body);
 }
 
-h1, h2, h3, h4, h5, h6 {
+h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
   font-weight: 700;
 }
@@ -43,6 +43,12 @@ h1, h2, h3, h4, h5, h6 {
   font-family: 'Cabinet Grotesk';
   src: url('/fonts/cabinet/CabinetGrotesk-Bold.otf') format('opentype');
   font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Cabinet Grotesk';
+  src: url('/fonts/cabinet/CabinetGrotesk-Black.otf') format('opentype');
+  font-weight: 900;
   font-style: normal;
 }
 @font-face {
