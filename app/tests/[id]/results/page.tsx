@@ -172,34 +172,6 @@ export default function TestResults() {
   return (
     <div className="min-h-screen bg-background">
       {/* Navigation */}
-      <nav className="bg-white shadow-sm border-b">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between h-16">
-            <div className="flex items-center">
-              <Link href="/dashboard" className="flex items-center space-x-2">
-                <div className="w-8 h-8 bg-primary rounded-lg"></div>
-                <span className="text-xl font-bold text-text">SnapGrade</span>
-              </Link>
-            </div>
-            <div className="flex items-center space-x-4">
-              {results.length > 0 && (
-                <button
-                  onClick={exportToCSV}
-                  className="bg-secondary text-white px-4 py-2 rounded-lg hover:bg-secondary/90 transition-all"
-                >
-                  Export CSV
-                </button>
-              )}
-              <Link
-                href={`/tests/${test.id}`}
-                className="text-text hover:text-primary transition-colors"
-              >
-                ← Back to Test
-              </Link>
-            </div>
-          </div>
-        </div>
-      </nav>
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Header */}
