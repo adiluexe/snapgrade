@@ -735,9 +735,11 @@ export default function Home() {
                   <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent"></div>
                   <FileText className="w-10 h-10 text-white relative z-10" />
                 </div>
-                <div className="absolute top-1/2 left-full w-full h-0.5 bg-gradient-to-r from-primary/30 to-transparent hidden lg:block transform -translate-y-1/2"></div>
-                <div className="absolute -top-2 -right-2 w-6 h-6 bg-primary/20 rounded-full flex items-center justify-center">
-                  <span className="text-xs font-bold text-primary">1</span>
+                {/* Connecting line to next step */}
+                <div className="absolute top-10 left-full w-full h-0.5 bg-gradient-to-r from-primary/40 to-transparent hidden lg:block transform -translate-y-1/2 z-0"></div>
+                {/* Step number badge */}
+                <div className="absolute -top-3 -right-3 w-8 h-8 bg-gradient-to-br from-primary to-primary/80 rounded-full flex items-center justify-center shadow-lg">
+                  <span className="text-sm font-bold text-white">1</span>
                 </div>
               </div>
               <h3 className="text-xl font-bold text-text mb-4 group-hover:text-primary transition-colors duration-300">
@@ -755,9 +757,11 @@ export default function Home() {
                   <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent"></div>
                   <Camera className="w-10 h-10 text-white relative z-10" />
                 </div>
-                <div className="absolute top-1/2 left-full w-full h-0.5 bg-gradient-to-r from-accent/30 to-transparent hidden lg:block transform -translate-y-1/2"></div>
-                <div className="absolute -top-2 -right-2 w-6 h-6 bg-accent/20 rounded-full flex items-center justify-center">
-                  <span className="text-xs font-bold text-accent">2</span>
+                {/* Connecting line to next step */}
+                <div className="absolute top-10 left-full w-full h-0.5 bg-gradient-to-r from-accent/40 to-transparent hidden lg:block transform -translate-y-1/2 z-0"></div>
+                {/* Step number badge */}
+                <div className="absolute -top-3 -right-3 w-8 h-8 bg-gradient-to-br from-accent to-accent/80 rounded-full flex items-center justify-center shadow-lg">
+                  <span className="text-sm font-bold text-white">2</span>
                 </div>
               </div>
               <h3 className="text-xl font-bold text-text mb-4 group-hover:text-accent transition-colors duration-300">
@@ -775,9 +779,11 @@ export default function Home() {
                   <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent"></div>
                   <Zap className="w-10 h-10 text-white relative z-10" />
                 </div>
-                <div className="absolute top-1/2 left-full w-full h-0.5 bg-gradient-to-r from-secondary/30 to-transparent hidden lg:block transform -translate-y-1/2"></div>
-                <div className="absolute -top-2 -right-2 w-6 h-6 bg-secondary/20 rounded-full flex items-center justify-center">
-                  <span className="text-xs font-bold text-secondary">3</span>
+                {/* Connecting line to next step */}
+                <div className="absolute top-10 left-full w-full h-0.5 bg-gradient-to-r from-secondary/40 to-transparent hidden lg:block transform -translate-y-1/2 z-0"></div>
+                {/* Step number badge */}
+                <div className="absolute -top-3 -right-3 w-8 h-8 bg-gradient-to-br from-secondary to-secondary/80 rounded-full flex items-center justify-center shadow-lg">
+                  <span className="text-sm font-bold text-white">3</span>
                 </div>
               </div>
               <h3 className="text-xl font-bold text-text mb-4 group-hover:text-secondary transition-colors duration-300">
@@ -795,8 +801,9 @@ export default function Home() {
                   <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent"></div>
                   <BarChart3 className="w-10 h-10 text-white relative z-10" />
                 </div>
-                <div className="absolute -top-2 -right-2 w-6 h-6 bg-primary/20 rounded-full flex items-center justify-center">
-                  <span className="text-xs font-bold text-primary">4</span>
+                {/* Step number badge */}
+                <div className="absolute -top-3 -right-3 w-8 h-8 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center shadow-lg">
+                  <span className="text-sm font-bold text-white">4</span>
                 </div>
               </div>
               <h3 className="text-xl font-bold text-text mb-4 group-hover:text-primary transition-colors duration-300">
