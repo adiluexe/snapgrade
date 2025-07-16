@@ -108,9 +108,17 @@ async def process_bubble_sheet(
             student_id
         )
         
-        return JSONResponse(content=result.dict())
+        # Check if processing was successful
+        if hasattr(result, 'success') and not result.success:
+            # Return error result
+            return JSONResponse(content=result.model_dump(), status_code=400)
+        
+        return JSONResponse(content=result.model_dump())
         
     except Exception as e:
+        import traceback
+        print(f"Error processing image: {str(e)}")
+        print(f"Traceback: {traceback.format_exc()}")
         raise HTTPException(status_code=500, detail=f"Processing failed: {str(e)}")
 
 @app.post("/process-demo")

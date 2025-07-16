@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 from typing import List, Optional, Dict, Any
 from datetime import datetime
 
@@ -27,7 +27,7 @@ class ProcessingResult(BaseModel):
     confidence_scores: List[float]
     image_quality: ImageQuality
     student_id: Optional[str] = None
-    processed_at: datetime = datetime.now()
+    processed_at: str = Field(default_factory=lambda: datetime.now().isoformat())
     
 class ErrorResult(BaseModel):
     success: bool = False
