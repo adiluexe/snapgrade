@@ -114,7 +114,7 @@ export default function TestBubbleSheet() {
       const result = await api.processImage(
         selectedFile,
         answerKey,
-        "standard_25", // Using the 25-question template (closest to our 5-question test)
+        "simple_5", // Using the optimized 5-question template
         `student-${Date.now()}`
       );
 
@@ -145,7 +145,7 @@ export default function TestBubbleSheet() {
   };
 
   const downloadTemplate = () => {
-    downloadBubbleSheetPDF(5, testTitle);
+    downloadBubbleSheetPDF(5);
   };
 
   return (

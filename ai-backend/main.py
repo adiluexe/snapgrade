@@ -10,6 +10,7 @@ from typing import List, Optional
 from pydantic import BaseModel
 
 from src.bubble_detector import BubbleSheetProcessor
+from src.improved_bubble_detector import ImprovedBubbleSheetProcessor
 from src.models import ProcessingResult, BubbleSheetTemplate
 
 app = FastAPI(
@@ -27,8 +28,9 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Initialize the bubble sheet processor
+# Initialize both processors
 processor = BubbleSheetProcessor()
+improved_processor = ImprovedBubbleSheetProcessor()
 
 @app.get("/")
 async def root():
@@ -42,6 +44,13 @@ async def health_check():
 async def get_templates():
     """Get available bubble sheet templates"""
     templates = [
+        {
+            "id": "simple_5",
+            "name": "Simple 5 Questions",
+            "questions": 5,
+            "choices": ["A", "B", "C", "D"],
+            "description": "5-question bubble sheet with A-D choices (optimized detection)"
+        },
         {
             "id": "standard_25",
             "name": "Standard 25 Questions",
@@ -100,13 +109,23 @@ async def process_bubble_sheet(
         # Convert PIL image to OpenCV format
         cv_image = cv2.cvtColor(np.array(image), cv2.COLOR_RGB2BGR)
         
-        # Process the bubble sheet
-        result = processor.process_image(
-            cv_image, 
-            correct_answers, 
-            template_id,
-            student_id
-        )
+        # Use improved processor for 5-question template
+        if template_id == "simple_5":
+            print(f"🎯 Using improved processor for {template_id}")
+            result = improved_processor.process_image(
+                cv_image, 
+                correct_answers, 
+                template_id,
+                student_id
+            )
+        else:
+            print(f"🎯 Using standard processor for {template_id}")
+            result = processor.process_image(
+                cv_image, 
+                correct_answers, 
+                template_id,
+                student_id
+            )
         
         # Check if processing was successful
         if hasattr(result, 'success') and not result.success:
@@ -149,4 +168,4 @@ async def process_demo_image():
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    uvicorn.run(app, host="0.0.0.0", port=8002)
